@@ -1,0 +1,60 @@
+import java.util.*;
+class Book{
+    String book_name;
+    String author;
+    int price;
+    int no_of_copies;
+    public void getinp(){
+        Scanner scan = new Scanner(System.in);
+        book_name = scan.next();
+        author = scan.next();
+        price = scan.nextInt();
+        no_of_copies = scan.nextInt();
+    }
+    punlic void display(){
+        System.out.println(book_name);
+        System.out.println(author);
+        System.out.println(price);
+        System.out.println(no_of_copies);
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+	    int n;
+	    //inp n;
+	    HashMap<Integer,ArraList<Book> > hmap=new  HashMap<Integer,ArraList<Book> >();
+	    int curr_rak=1;
+	    int curr_size=0;
+	    for(int i=0;i<n;i++){
+	        Book temp=new Book().getinp();
+	        if(curr_size==5){
+	            curr_rak++;
+	            curr_size=0;
+	        }
+	        if(curr_size==0){
+	            hmap.put(curr_rak,new ArrayList<Book>());
+	            curr_size++;
+	            continue;
+	        }
+	        hmap.get(i).add(temp);
+	        curr_size++;
+	    }
+		String name="  ";
+		Iterator itr1 = hmap.entrySet().iterator();
+	    while (itr1.hasNext()){
+	        Map.Entry mapElem = (Map.Entry)itr1.next();
+	        ArrayList<Book> bk=(ArrayList<Book>)mapElem.getValue();
+	        int found=0;
+	        for(int i=0;i<bk.length();i++){
+	            if(bk.get(i).book_name.equals(name)){
+	                //print (String)mapElm.getKey()
+	                found=1;
+	                break;
+	            }
+	        }
+	        if(found){break;}
+	    }
+	    // hmap.get(rak no) then collection .sort
+	}
+}
